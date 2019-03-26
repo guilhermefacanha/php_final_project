@@ -28,6 +28,7 @@ class Page
             <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+            <link rel="stylesheet" href="css/style.css">
 
             
             <!-- Optional JavaScript -->
@@ -48,6 +49,31 @@ class Page
                 </h1>
                 <p><?php echo self::$subtitle ?></p>
             </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Library System :: </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="library.php">Libraries</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Books </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Item 001</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Item 002</a>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <div class="container">
         <?php
 
@@ -70,20 +96,24 @@ class Page
     public static function success($msg)
     {
     ?>
-        <div class="alert alert-success" role="alert">
-            <strong>Success! </strong>
-            <?php echo $msg ?>
-        </div>
+        <div class="alert alert-success alert-dismissible fade show">
+            <strong>Success: </strong><?php echo $msg ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+	    </div>
     <?php
     }
 
     public static function error($msg)
     {
     ?>
-        <div class="alert alert-danger" role="alert">
-            <strong>Error! </strong>
-            <?php echo $msg ?>
-        </div>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <strong>Error: </strong><?php echo $msg ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+	    </div>
     <?php
     }
 

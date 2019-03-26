@@ -5,13 +5,13 @@ class LibraryMapper {
     //Place to store the PDO Agent
     private static $db;
 
-    static function initialize(string $className)   {
+    static function initialize()   {
         
-        self::$db = new PDOAgent($className);
+        self::$db = new PDOAgent('LIBRARY');
 
     }
 
-    static function createLibrary(Library $library) : int   {
+    static function create(Library $library) : int   {
         $sqlInsert = "INSERT INTO LIBRARY (Name, Address) VALUES (:name, :address)";
 
         self::$db->query($sqlInsert);
@@ -25,16 +25,16 @@ class LibraryMapper {
 
     }
 
-    static function getBooks() : Array {
+    static function getAll() : Array {
         
-        $selectAll = "SELECT * FROM LIBRARY;";
+        $selectAll = "SELECT * FROM LIBRARY";
 
         self::$db->query($selectAll);
         self::$db->execute();
         return self::$db->resultSet();
     }
 
-    static function deleteLibrary(int $id) : bool {
+    static function delete(int $id) : bool {
         $deleteSQLQuery = "DELETE FROM LIBRARY WHERE LibraryId = :id;";
 
         try {
