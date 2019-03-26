@@ -6,7 +6,6 @@ SELECT '====CREATE DATABASE====';
 -- DROP the database if it exists
 DROP DATABASE IF EXISTS LibraryDb;
 
-ß
 -- CREATE THE DATABASE
 CREATE DATABASE LibraryDb;
 
