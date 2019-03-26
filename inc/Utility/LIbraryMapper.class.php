@@ -7,7 +7,7 @@ class LibraryMapper {
 
     static function initialize()   {
         
-        self::$db = new PDOAgent('LIBRARY');
+        self::$db = new PDOAgent('Library');
 
     }
 
@@ -32,6 +32,15 @@ class LibraryMapper {
         self::$db->query($selectAll);
         self::$db->execute();
         return self::$db->resultSet();
+    }
+
+    static function getOne($id) : Library{
+        $sqlSelect = "SELECT * FROM LIBRARY WHERE LibraryId = :id";
+        self::$db->query($sqlSelect);
+        //bind
+        self::$db->bind(":id", $id);
+        self::$db->execute();
+        return self::$db->singleResult();
     }
 
     static function delete(int $id) : bool {

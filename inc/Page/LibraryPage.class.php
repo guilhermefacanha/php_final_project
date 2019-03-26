@@ -1,11 +1,11 @@
 <?php
 class LibraryPage
 {
-    public static function showLibraryTable($records)
+    public static function showTable($records)
     {
         //Setup the table
         echo '<h2>Libraries</h2>';
-        echo '<table class="table table-striped table-hover"> <thead>';
+        echo '<table id="tb_records" name="tb_records" class="display table table-striped table-hover"> <thead>';
         echo '<th>Name</th>';
         echo '<th>Address</th>';
         echo '<th>Controls</th>';
@@ -32,9 +32,19 @@ class LibraryPage
         </tr>
       </tfoot>';
         echo '</table> <hr style="border-top:1px solid darkgray !important">';
+        echo 
+            '<script type="text/javascript">
+                $(document).ready(function(){
+                    $(\'#tb_records\').DataTable({
+                        responsive : true,
+                        paging : true,
+                        "pagingType" : "full_numbers"
+                    });
+                });
+            </script>';
     }
 
-    public static function libraryForm(Library $entity)
+    public static function showForm(Library $entity)
     {
         echo '
             <div class="container">
