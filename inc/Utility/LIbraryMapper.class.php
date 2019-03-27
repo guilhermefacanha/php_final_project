@@ -25,6 +25,26 @@ class LibraryMapper {
 
     }
 
+    static function update(Library $library){
+        //query
+        $query = "UPDATE LIBRARY
+                        SET Name=:name, Address=:address
+                        WHERE LibraryId=:id;
+                        ";
+        self::$db->query($query);
+
+        //bind
+        self::$db->bind(":name", $library->getName());
+        self::$db->bind(":address", $library->getAddress());
+        self::$db->bind(":id", $library->getId());
+        
+        //execute
+        self::$db->execute();
+        
+        //result
+        return true;
+    }
+
     static function getAll() : Array {
         
         $selectAll = "SELECT * FROM LIBRARY";
