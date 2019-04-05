@@ -12,7 +12,41 @@
             }
 
             return true;
-        }       
-    }
+        }
+        
+        public static function isBookValid(& $POST, $libraries){
+            $errors=array();
+            $quantityAvailable = $POST['available'];
+            if(strlen($POST['library']) == 0)
+            {
+                $errors[]= "Required Field: Library";
+            }
+            if(!array_key_exists($POST['library'],$libraries))
+            {
+                $errors[]="This library doesn't exist in our database! ID:".$POST['library'];
+            }
+            if(strlen($POST['title']) == 0)
+            {
+                $errors[]="Required Field: Title";
+            }
+            if(strlen($POST['author']) == 0)
+            {
+                $errors[]="Required Field: Author";
+            }
+            if(strlen($POST['category']) == 0)
+            {
+                $errors[]="Required Field: Category";
+            }
+            if(strlen($quantityAvailable) == 0)
+            {
+                $errors[]="Required Field: Quantity Available";
+            }elseif (filter_var($quantityAvailable, FILTER_VALIDATE_INT, array("options" => array("min_range"=>0))) === false)
+            {
+                $errors[]="Quantity Available: requires an integer number equal or greater than 0!";
+            }
+            
+            return $errors;
+        }
+    }    
     
 ?>

@@ -85,6 +85,20 @@ class LibraryMapper {
         return true;
 
     }
+    static function getAllAsAssociativeArray() : Array {
+        
+        $selectAll = "SELECT * FROM LIBRARY";
+
+        self::$db->query($selectAll);
+        self::$db->execute();
+        $libraries = self::$db->resultSet();
+        $associativeArray=array();
+        foreach($libraries as $library){
+            $associativeArray[$library->getId()]=$library->getName();
+        }
+        
+        return $associativeArray;
+    }
 
 }
 

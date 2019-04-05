@@ -62,8 +62,11 @@ class Page
                         <li class="nav-item">
                             <a class="nav-link" href="library.php">Libraries</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="book.php">Books</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Books </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Example DropDown Menu </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Item 001</a>
                                 <div class="dropdown-divider"></div>
@@ -120,13 +123,16 @@ class Page
     public static function showErrors($errors)
     {
         ?>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Error! </strong>
         <?php
             foreach ($errors as $msg) {
-                echo "</br>" . $msg;
-            }
+                echo "</br>" . $msg;                
+            }            
         ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php
     }

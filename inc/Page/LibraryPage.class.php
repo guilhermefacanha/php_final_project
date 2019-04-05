@@ -65,7 +65,7 @@ class LibraryPage
                 </div>
                 <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">' . ($entity->getId() > 0 ? ('Edit Library') : 'Add Library') . '</button>
+                        <button type="submit" class="btn btn-primary">' . ($entity->getId() > 0 ? ('Update Library') : 'Add Library') . '</button>
                         '.($entity->getId() > 0 ? '<a class="btn btn-danger" href="?new">Cancel</a>' : '').'
                     </div>
                 </div>
