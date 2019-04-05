@@ -121,21 +121,6 @@ INNER JOIN LIBRARY l ON l.LibraryId = b.LibraryId
 ORDER BY l.Name, b.Title
 ;
 
-SELECT '====DELETE LIBRARY WITH CASCADE====';
--- DELETE (DELETE)
-DELETE FROM LIBRARY WHERE LibraryId = 5;
-
-SELECT '====SELECT DATA AFTER DELETE====';
--- SELECT REFERENCE 2 AFTER DELETE
-SELECT l.LibraryId, l.Name as library, b.BookId, b.Title, b.Author, b.Category, 
-CASE WHEN b.Available = 1 THEN 'AVAILABLE' ELSE 'NOT AVAILABLE' END as Available,
-br.UserId as RentedBy,br.RentStart,br.RentEnd
-FROM BOOK b
-LEFT JOIN BOOK_RENT br ON br.BookId = b.BookId
-INNER JOIN LIBRARY l ON l.LibraryId = b.LibraryId
-ORDER BY l.Name, b.Title
-;
-
 
 
 

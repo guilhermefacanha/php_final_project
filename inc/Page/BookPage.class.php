@@ -40,7 +40,7 @@ class BookPage
             <td>' . $rec->getAuthor() . '</td>
             <td>' . $rec->getCategory() . '</td>
             <td>' . $available . '</td>                        
-            <td>
+            <td width="120">
                 <a href="?upd='.$rec->getBookId().'" class="badge badge-primary">Update</a>
                 <a href="?del='.$rec->getBookId().'" onclick="if( confirm(\'Confirm delete Book '.$rec->getTitle().' ?\') == false ) return false;" class="badge badge-danger">Delete</a>
             </td>
@@ -52,18 +52,14 @@ class BookPage
         //Display the total count of list -->
         echo '<tfoot>
         <tr class="alert-info">
-            <td colspan="10" style="font-weight:bold;">Total Count: ' . count($records) . '</td>
+            <td colspan="6" style="font-weight:bold;">Total Count: ' . count($records) . '</td>
         </tr>
       </tfoot>';
         echo '</table> <hr style="border-top:1px solid darkgray !important">';
         echo 
             '<script type="text/javascript">
                 $(document).ready(function(){
-                    $(\'#tb_records\').DataTable({
-                        responsive : true,
-                        paging : true,
-                        "pagingType" : "full_numbers"
-                    });
+                    $(\'#tb_records\').DataTable();
                 });
             </script>';
     }
