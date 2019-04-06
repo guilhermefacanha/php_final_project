@@ -88,7 +88,11 @@ class Page
         </div>
         </body>
         <footer>
-
+            <ul>
+                <li>Guilherme Lima Facanha # 300294067</li>
+                <li>David Silva de Araujo # 300291953</li>
+                <li>Gessica Matos # 300284935</li>
+            </ul>
         </footer>
 
         </html>

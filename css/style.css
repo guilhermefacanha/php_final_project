@@ -29,3 +29,18 @@
 .alert-dismissible .close {
 	padding: .40rem .5rem
 }
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: rgb(194, 194, 194);
+	color: rgb(17, 17, 17);
+	text-align: center;
+  }
+
+  footer ul{
+	  font-weight: bold;
+	  list-style-type: none;
+  }
