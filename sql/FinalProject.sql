@@ -110,8 +110,9 @@ UPDATE LIBRARY SET Name = 'Burnaby Public Library, Tommy Douglas Library' WHERE 
 SELECT '====UPDATE BOOK STATE AVAILABLE FOR RENTS====';
 UPDATE BOOK SET Available = 0 WHERE BookId IN (1,4,5,7,10,13);
 
-SELECT '====SELECT DATA AFTER UPDATE====';
--- SELECT REFERENCE
+SELECT '====CREATE OUR STATS VIEW====';
+-- DROP VIEW vw_rent_book
+CREATE VIEW vw_rent_book AS
 SELECT l.LibraryId, l.Name as library, b.BookId, b.Title, b.Author, b.Category, 
 CASE WHEN b.Available = 1 THEN 'AVAILABLE' ELSE 'NOT AVAILABLE' END as Available,
 br.UserId as RentedBy,br.RentStart,br.RentEnd
@@ -120,7 +121,6 @@ LEFT JOIN BOOK_RENT br ON br.BookId = b.BookId
 INNER JOIN LIBRARY l ON l.LibraryId = b.LibraryId
 ORDER BY l.Name, b.Title
 ;
-
 
 
 
