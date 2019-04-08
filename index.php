@@ -11,8 +11,8 @@
     //require_once("inc/util/PDOAgent.class.php");
     //require_once("inc/dao/CustomerMapper.class.php");
 
-    Page::$title = 'Index Page';
-    Page::$subtitle = 'Some subtitle for the index page';
+    Page::$title = 'Library System';
+    Page::$subtitle = 'Index Page';
     Page::header();
 
     // Page::error('Example of an error!');
