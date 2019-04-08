@@ -77,7 +77,7 @@ class StatsPage
         ?>
         
         <h3><?php echo $title ?></h3>
-        <canvas id="myChart" width="1200" height="400"></canvas>
+        <canvas id="myChart" width="1200" height="300"></canvas>
 
         <script>
             var jsonfile  = {<?php echo 'jsonarray:'.$groupsLib ?>};
