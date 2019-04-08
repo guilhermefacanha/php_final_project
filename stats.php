@@ -41,13 +41,11 @@
     
     $resGAvail = RestClient::call("GET",array('gavail' => 'true'));
     $groupsAvail = json_decode($resGAvail);
-    var_dump($groupsAvail);
 
     StatsPage::showGroupAvailableChart();
 
     $resGLib = RestClient::call("GET",array('glib' => 'true'));
-    $groupsLib = json_decode($resGLib);
-    var_dump($groupsLib);
+    $groupsLib = json_decode($resGLib);    
     
     Page::footer();
     ?>
