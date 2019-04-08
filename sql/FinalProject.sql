@@ -41,7 +41,7 @@ CREATE TABLE BOOK_RENT(
 	BookId INT(9) NOT NULL,
 	UserId VARCHAR(9) NOT NULL,
 	RentStart DATE NOT NULL,
-	RentEnd DATE NOT NULL,
+	RentEnd DATE,
 	FOREIGN KEY (BookId) REFERENCES BOOK(BookId) ON DELETE CASCADE
 );
 
@@ -111,8 +111,8 @@ SELECT '====UPDATE BOOK STATE AVAILABLE FOR RENTS====';
 UPDATE BOOK SET Available = 0 WHERE BookId IN (1,4,5,7,10,13);
 
 SELECT '====CREATE OUR STATS VIEW====';
--- DROP VIEW vw_rent_book
-CREATE VIEW vw_rent_book AS
+-- DROP VIEW vw_book_rent
+CREATE VIEW vw_book_rent AS
 SELECT l.LibraryId, l.Name as library, b.BookId, b.Title, b.Author, b.Category, 
 CASE WHEN b.Available = 1 THEN 'AVAILABLE' ELSE 'NOT AVAILABLE' END as Available,
 br.UserId as RentedBy,br.RentStart,br.RentEnd
