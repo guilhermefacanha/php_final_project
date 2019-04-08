@@ -19,6 +19,7 @@
 
     LibraryMapper::initialize();
     $library = new Library();
+    $update = false;
 
     //POST METHOD USED TO PERSIST INSERT OR UPDATE
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -46,6 +47,7 @@
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         if(isset($_GET['upd'])){
             $id = $_GET['upd'];
+            $update = true;
             $library = LibraryMapper::getOne($id);
         }
         else if(isset($_GET['del'])){
@@ -64,6 +66,10 @@
     LibraryPage::showTable($libraries);
 
     LibraryPage::showForm($library);
+
+    if($update==true){
+        LibraryPage::openModal();
+    }
 
     Page::footer();
 ?>

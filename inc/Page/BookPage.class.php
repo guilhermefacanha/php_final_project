@@ -12,7 +12,13 @@ class BookPage
         //  $Available;
     
         //Setup the table
-        echo '<h2>Books</h2>';
+        echo '<h2>Books</h2>
+            <!-- Trigger the modal with a button -->
+            <button style="margin-bottom:10px;" id="btnModal" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus-square" aria-hidden="true"></i> New Book
+            </button>
+            <br/>
+        ';
         echo '<table id="tb_records" name="tb_records" class="display table table-striped table-hover"> <thead>';
         echo '<th>Library</th>';
         echo '<th>Title</th>';
@@ -67,54 +73,75 @@ class BookPage
     public static function showForm(Book $entity, $libraries)
     {
         echo '
-            <div class="container">
-            <h3>'.($entity->getBookId() > 0 ? ('Edit Book - '.$entity->getBookId() ) : 'Add Book').'</h3>
-            <form method="post">
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+          <form method="post">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">'.($entity->getBookId() > 0 ? ('Edit Book - '.$entity->getBookId() ) : 'Add Book').'</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
                 <input type="hidden" name="id" id="id" value="'.$entity->getBookId().'">
                 <div class="form-group row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <label>Library:</label>
                         <select name="library">';
                         //Populate select component with the libraries id and Name
-        foreach($libraries as $id => $library){                       
-            $select="" ;
-            //select the right library if it is in edit mode
-            if($id==$entity->getLibraryId()){
-                $select= "selected='selected'" ;
-            }
-            echo "            <option value=$id $select> $library</option>";
-        }       
-        echo '          </select>
+                        foreach($libraries as $id => $library){                       
+                            $select="" ;
+                            //select the right library if it is in edit mode
+                            if($id==$entity->getLibraryId()){
+                                $select= "selected='selected'" ;
+                            }
+                            echo "            <option value=$id $select> $library</option>";
+                        }       
+                        echo '          
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <label>Title:</label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Book Title..." value="'.$entity->getTitle().'">
                     </div>
                 </div>                
                 <div class="form-group row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <label>Author:</label>
                         <input type="text" class="form-control" name="author" id="author" placeholder="Author name" value="'.$entity->getAuthor().'">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <label>Category:</label>
                         <input type="text" class="form-control" name="category" id="category" placeholder="Book category" value="'.$entity->getCategory().'">
                     </div>
                 </div>
-                
-               
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">' . ($entity->getBookId() > 0 ? ('Update Book') : 'Add Book') . '</button>
-                        '.($entity->getBookId() > 0 ? '<a class="btn btn-danger" href="?new">Cancel</a>' : '').'
-                    </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">' . ($entity->getBookId() > 0 ? ('Update Book') : 'Add Book') . '</button>
+                    '.($entity->getBookId() > 0 ? '<a class="btn btn-danger" href="?new">Cancel</a>' : '').'
+                  </div>
+              </div>
+
             </form>
-        </div>';
+
+          </div>
+        </div>
+        ';
+    }
+
+    public static function openModal(){
+        ?>
+        <script>
+            document.getElementById("btnModal").click();
+        </script>
+        <?php
     }
 }
 

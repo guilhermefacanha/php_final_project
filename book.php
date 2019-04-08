@@ -28,6 +28,7 @@
 
     BookMapper::initialize();
     $book = new Book();
+    $update = false;
 
     //POST METHOD USED TO PERSIST INSERT OR UPDATE
     if ($_SERVER["REQUEST_METHOD"] == "POST") {    
@@ -57,6 +58,7 @@
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         if(isset($_GET['upd'])){
             $id = $_GET['upd'];
+            $update = true;
             $book = BookMapper::getOne($id);
         }
         else if(isset($_GET['del'])){
@@ -75,6 +77,10 @@
     BookPage::showTable($books, $allLibraries);
 
     BookPage::showForm($book, $allLibraries);
+
+    if($update==true){
+        BookPage::openModal();
+    }
 
     Page::footer();
 ?>

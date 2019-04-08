@@ -4,7 +4,10 @@ class LibraryPage
     public static function showTable($records)
     {
         //Setup the table
-        echo '<h2>Libraries</h2>';
+        echo '<h2>Libraries</h2>
+        <!-- Trigger the modal with a button -->
+            <button style="margin-bottom:10px;" id="btnModal" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" aria-hidden="true"></i> New Library</button>
+            <br/>';
         echo '<table id="tb_records" name="tb_records" class="display table table-striped table-hover"> <thead>';
         echo '<th>Name</th>';
         echo '<th>Address</th>';
@@ -47,30 +50,52 @@ class LibraryPage
     public static function showForm(Library $entity)
     {
         echo '
-            <div class="container">
-            <h3>'.($entity->getId() > 0 ? ('Edit Library - '.$entity->getId() ) : 'Add Library').'</h3>
-            <form method="post">
-                <input type="hidden" name="id" id="id" value="'.$entity->getId().'">
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label>Name:</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Library Name..." value="'.$entity->getName().'">
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+          <form method="post">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+              <h4 class="modal-title">'.($entity->getId() > 0 ? ('Edit Library - '.$entity->getId() ) : 'Add Library').'</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                    <input type="hidden" name="id" id="id" value="'.$entity->getId().'">
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label>Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Library Name..." value="'.$entity->getName().'">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label>Address:</label>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Library Address..." value="'.$entity->getAddress().'">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label>Address:</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Library Address..." value="'.$entity->getAddress().'">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">' . ($entity->getId() > 0 ? ('Update Library') : 'Add Library') . '</button>
-                        '.($entity->getId() > 0 ? '<a class="btn btn-danger" href="?new">Cancel</a>' : '').'
-                    </div>
-                </div>
+              </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">' . ($entity->getId() > 0 ? ('Update Library') : 'Add Library') . '</button>
+                            '.($entity->getId() > 0 ? '<a class="btn btn-danger" href="?new">Cancel</a>' : '').'
+                  </div>
+              </div>
             </form>
-        </div>';
+
+          </div>
+        </div>
+        ';
+    }
+
+    public static function openModal(){
+        ?>
+        <script>
+            document.getElementById("btnModal").click();
+        </script>
+        <?php
     }
 }
 
