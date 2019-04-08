@@ -65,14 +65,11 @@ class Page
                         <li class="nav-item">
                             <a class="nav-link" href="book.php">Books</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Example DropDown Menu </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Item 001</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Item 002</a>
-                                
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bookRent.php">Book Rent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="stats.php">Statistics</a>
                         </li>
                     </ul>
                 </div>
@@ -87,6 +84,10 @@ class Page
     {?>
         </div>
         </body>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <footer>
             <ul>
                 <li>Guilherme Lima Facanha # 300294067</li>

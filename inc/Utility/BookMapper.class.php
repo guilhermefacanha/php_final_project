@@ -107,6 +107,21 @@ class BookMapper {
 
     }
 
+    static function changeAvailability($bookId, $available){
+        $query = "UPDATE book SET Available=:Available WHERE BookId=:BookId;";
+        self::$db->query($query);
+
+        //bind
+        self::$db->bind(":BookId", $bookId);
+        self::$db->bind(":Available", $available);        
+        
+        //execute
+        self::$db->execute();
+        
+        //result
+        return true;
+    }
+
 }
 
 ?>

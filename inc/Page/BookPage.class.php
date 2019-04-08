@@ -105,12 +105,7 @@ class BookPage
                         <input type="text" class="form-control" name="category" id="category" placeholder="Book category" value="'.$entity->getCategory().'">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label>Quantity Available:</label>
-                        <input type="text" class="form-control" name="available" id="available" placeholder="Quantity available" value="'.$entity->getAvailable().'">
-                    </div>
-                </div>
+                
                
                 <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">

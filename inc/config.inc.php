@@ -5,6 +5,7 @@ define("DB_HOST","localhost");
 define("DB_USER","root");
 define("DB_PASS","");
 define("DB_NAME","LibraryDb");
+define("API_URL","RestAPI.php")
 
 //Host Remote
 //define("DB_HOST","reminder.ccqysqxekuuh.us-east-2.rds.amazonaws.com");

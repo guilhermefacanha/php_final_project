@@ -2,6 +2,8 @@
     
     //config file
     require_once("inc/config.inc.php");
+
+    //page html related files
     require_once("inc/Page/Page.class.php");
     require_once("inc/Page/BookPage.class.php");
     require_once("inc/Page/Validation.class.php");
@@ -33,8 +35,7 @@
         $book->setLibraryId($_POST['library']);        
         $book->setTitle($_POST['title']);
         $book->setAuthor($_POST['author']);
-        $book->setCategory($_POST['category']);
-        $book->setAvailable($_POST['available']);        
+        $book->setCategory($_POST['category']);            
         $errors = Validation::isBookValid($_POST, $allLibraries);
         if(count($errors)==0){//When 0, validation is ok
             if($book->getBookId()>0){

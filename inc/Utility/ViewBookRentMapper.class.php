@@ -26,6 +26,21 @@ class ViewBookRentMapper {
         self::$db->execute();
         return self::$db->singleResult();
     }
+    
+    static function getGroupByAvailable() : Array{
+        $sqlSelect = 'select Available, COUNT(BookId) as qty from librarydb.vw_book_rent group by Available';
+        self::$db->query($sqlSelect);
+        self::$db->execute();
+        return self::$db->resultSetArray();
+    }
+
+    
+    static function getGroupByLibrary() : Array{
+        $sqlSelect = 'select library, COUNT(BookId) as qty from librarydb.vw_book_rent group by library';
+        self::$db->query($sqlSelect);
+        self::$db->execute();
+        return self::$db->resultSetArray();
+    }
 
     static function getAllAsAssociativeArray() : Array {
         

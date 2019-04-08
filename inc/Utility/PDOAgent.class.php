@@ -84,6 +84,12 @@ class PDOAgent
         $this->stm->setFetchMode(PDO::FETCH_CLASS, $this->className);
         return $this->stm->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
+
+    //result set array
+    public function resultSetArray(){
+        $this->execute();
+        return $this->stm->fetchAll();
+    }
     
     //return single result
     public function singleResult(){

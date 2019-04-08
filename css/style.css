@@ -44,3 +44,14 @@ footer {
 	  font-weight: bold;
 	  list-style-type: none;
   }
+
+  body{
+	  margin-bottom: 10px;
+	  width: 100%;
+  }
+
+  @media (min-width: 1200px){
+	  .container{
+		  max-width: 90%;
+	  }
+  }

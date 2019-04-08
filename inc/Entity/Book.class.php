@@ -12,13 +12,18 @@
 // +-----------+--------------+------+-----+---------+----------------+
 class Book
 {
-    private $BookId;
-    private $LibraryId;
-    private $Title;
-    private $Author;
-    private $Category;
-    private $Available;    
+    private $BookId; // table identificator
+    private $LibraryId; //id for the library that contains the book (FK)
+    private $Title; //title of the book
+    private $Author; //author of the book
+    private $Category; //category of the book
+    private $Available = 1; //a new book is set is available by default    
 
+    public function __construct($bookId = null){
+        if($bookId != null)
+            $this->$BookId = $bookId;
+    }
+    
     //gets
     public function getBookId(){return $this->BookId;}
     public function getLibraryId(){return $this->LibraryId;}
