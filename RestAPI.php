@@ -38,10 +38,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
                  //return the json for all the records
                  echo json_encode($record);
              }
-        } 
+        }
         else {
-            //Get all the records
-            $records = ViewBookRentMapper::getAll();
+
+            if(isset($requestData['text'])){
+                
+                $avail = $requestData['avail'];
+                $text = $requestData['text'];
+
+                //Get filtered the records
+                $records = ViewBookRentMapper::getAllFilter($avail,$text);
+            }else{
+                //Get all the records
+                $records = ViewBookRentMapper::getAll();
+            }
+
 
             //Change them to type StdClass
             $jrecords = array();
@@ -55,53 +66,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
             //return the json for all the records
             echo json_encode($jrecords);
         }
-
-        break;
-
-    case "POST":
-
-        //Insert a book
-        $nb = new Book();
-        $nb->setISBN($requestData['isbn']);
-        $nb->setTitle($requestData['title']);
-        $nb->setAuthor($requestData['author']);
-        $nb->setPrice($requestData['price']);
-
-        //Insert the book
-        $result = recordsMapper::createBook($nb);
-
-        //set the header
-        header('Content-Type: application/json');
-        echo json_encode($result);
-
-        break;
-
-    case "PUT":
-
-        //Update a book
-        $nb = new Book();
-        $nb->setISBN($requestData['isbn']);
-        $nb->setTitle($requestData['title']);
-        $nb->setAuthor($requestData['author']);
-        $nb->setPrice($requestData['price']);
-
-        $isbn = $requestData['edit'];
-        //Insert the book
-        $result = recordsMapper::updateBook($nb, $isbn);
-
-        //set the header
-        header('Content-Type: application/json');
-        echo json_encode($result);
-
-        break;
-
-    case "DELETE":
-        var_dump($requestData);
-        $result = recordsMapper::deleteBook($requestData['isbn']);
-
-        //set the header
-        header('Content-Type: application/json');
-        echo json_encode($result);
 
         break;
 

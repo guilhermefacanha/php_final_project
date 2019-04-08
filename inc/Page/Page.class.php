@@ -69,6 +69,9 @@ class Page
                             <a class="nav-link" href="bookRent.php">Book Rent</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="bookReport.php">Book Rent Report</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="stats.php">Statistics</a>
                         </li>
                     </ul>

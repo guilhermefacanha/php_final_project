@@ -3,6 +3,38 @@ class StatsPage
 {
     public static function showTable($records)
     {
+        echo '
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-inline" style="width:100%;" action="?" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Availabity: </label>
+                            </div>
+                            <div class="col">
+                                <select class="form-control form-control-sm" name="available" id="available">
+                                    <option value="-1">Select One</option>
+                                    <option value="0">Not Available</option>
+                                    <option value="1">Available</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label>Library / Title / Author / Category: </label>
+                                <input type="text" class="form-control" name="textSearch" id="textSearch" placeholder="text search...">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-sm btn-primary" btn-lg btn-block">
+                            <i class="fa fa-search"></i> Filter
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+        ';
+
         //Setup the table
         echo '<h2>Libraries</h2>';
         echo '<table id="tb_records" name="tb_records" class="display table table-striped table-hover"> <thead>';
@@ -39,16 +71,6 @@ class StatsPage
         </tr>
       </tfoot>';
         echo '</table> <hr style="border-top:1px solid darkgray !important">';
-        echo 
-            '<script type="text/javascript">
-                $(document).ready(function(){
-                    $(\'#tb_records\').DataTable({
-                        responsive : true,
-                        paging : true,
-                        "pagingType" : "full_numbers"
-                    });
-                });
-            </script>';
     }
 
     public static function showGroupAvailableChart(){
