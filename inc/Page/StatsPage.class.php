@@ -36,7 +36,7 @@ class StatsPage
         ';
 
         //Setup the table
-        echo '<h2>Libraries</h2>';
+        echo '<h2>Books</h2>';
         echo '<table id="tb_records" name="tb_records" class="display table table-striped table-hover"> <thead>';
         echo '<th>Library</th>';
         echo '<th>Title</th>';

@@ -14,11 +14,11 @@
     //require_once("inc/dao/CustomerMapper.class.php");
 
     Page::$title = 'Admin Statistics';
-    Page::$subtitle = 'Book Rentals';
+    Page::$subtitle = 'Books by Availability';
     Page::header();
 
     $resGAvail = RestClient::call("GET",array('gavail' => 'true'));
-    StatsPage::showGroupChart($resGAvail ,'Books per Availabilty');
+    StatsPage::showGroupChart($resGAvail ,'Books by Availabilty');
     
     Page::footer();
     ?>

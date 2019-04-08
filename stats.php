@@ -14,7 +14,7 @@
     //require_once("inc/dao/CustomerMapper.class.php");
 
     Page::$title = 'Admin Statistics';
-    Page::$subtitle = 'Book Rentals';
+    Page::$subtitle = 'Books by Library';
     Page::header();
 
     $resGLib = RestClient::call("GET",array('glib' => 'true'));

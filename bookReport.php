@@ -13,8 +13,8 @@
     require_once("inc/Utility/RestClient.class.php");
     //require_once("inc/dao/CustomerMapper.class.php");
 
-    Page::$title = 'Admin Statistics';
-    Page::$subtitle = 'Book Rentals';
+    Page::$title = 'Book';
+    Page::$subtitle = 'Book Rent Report';
     Page::header();
     if($_POST){
         $avail = $_POST['available'];
