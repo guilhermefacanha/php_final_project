@@ -40,6 +40,10 @@ class Page
             <script src="https://rawgit.com/RobinHerbots/Inputmask/4.x/dist/jquery.inputmask.bundle.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
 
+            <!-- ChartJS -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.css" rel="stylesheet">
+
         </head>
 
         <body>
@@ -72,7 +76,10 @@ class Page
                             <a class="nav-link" href="bookReport.php">Book Rent Report</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="stats.php">Statistics</a>
+                            <a class="nav-link" href="stats.php">Library Statistics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="stats2.php">Book Statistics</a>
                         </li>
                     </ul>
                 </div>

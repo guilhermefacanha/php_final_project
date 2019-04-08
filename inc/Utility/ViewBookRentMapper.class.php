@@ -70,7 +70,7 @@ class ViewBookRentMapper {
     }
     
     static function getGroupByAvailable() : Array{
-        $sqlSelect = 'select Available, COUNT(BookId) as qty from librarydb.vw_book_rent group by Available';
+        $sqlSelect = 'select Available as label, COUNT(BookId) as qty from librarydb.vw_book_rent group by Available';
         self::$db->query($sqlSelect);
         self::$db->execute();
         return self::$db->resultSetArray();
@@ -78,7 +78,7 @@ class ViewBookRentMapper {
 
     
     static function getGroupByLibrary() : Array{
-        $sqlSelect = 'select library, COUNT(BookId) as qty from librarydb.vw_book_rent group by library';
+        $sqlSelect = 'select library as label, COUNT(BookId) as qty from librarydb.vw_book_rent group by library order by 2 desc';
         self::$db->query($sqlSelect);
         self::$db->execute();
         return self::$db->resultSetArray();

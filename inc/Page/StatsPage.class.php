@@ -73,50 +73,65 @@ class StatsPage
         echo '</table> <hr style="border-top:1px solid darkgray !important">';
     }
 
-    public static function showGroupAvailableChart(){
-        echo '
+    public static function showGroupChart($groupsLib, $title){
+        ?>
+        
+        <h3><?php echo $title ?></h3>
+        <canvas id="myChart" width="1200" height="400"></canvas>
+
         <script>
-window.onload = function() {
-
-var dataPoints = [];
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title: {
-		text: "Daily Sales Data"
-	},
-	axisY: {
-		title: "Units",
-		titleFontSize: 24
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "#,### Units",
-		dataPoints: dataPoints
-	}]
-});
-
-function addData(data) {
-	for (var i = 0; i < data.length; i++) {
-		dataPoints.push({
-			x: new Date(data[i].date),
-			y: data[i].units
-		});
-	}
-	chart.render();
-
-}
-
-$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales-data.json", addData);
-
-}
-</script>
-        ';
-        echo '<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
-    }
+            var jsonfile  = {<?php echo 'jsonarray:'.$groupsLib ?>};
+            var labels = jsonfile.jsonarray.map(function(e) {
+                return e.label;
+            });
+            var data = jsonfile.jsonarray.map(function(e) {
+                return e.qty;
+            });;
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '<?php echo $title ?>',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: true,
+						position: 'top',
+					},
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    <?php
+    }        
 
 }
 

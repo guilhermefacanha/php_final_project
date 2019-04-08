@@ -17,8 +17,8 @@
     Page::$subtitle = 'Book Rentals';
     Page::header();
 
-    $resGLib = RestClient::call("GET",array('glib' => 'true'));
-    StatsPage::showGroupChart($resGLib ,'Books per Library');
+    $resGAvail = RestClient::call("GET",array('gavail' => 'true'));
+    StatsPage::showGroupChart($resGAvail ,'Books per Availabilty');
     
     Page::footer();
     ?>
