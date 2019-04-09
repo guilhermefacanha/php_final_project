@@ -25,7 +25,7 @@ class ViewBookRentMapper {
         //append select with filter
         if($avail >= 0 ){
 
-            $selectAll = $selectAll.' and Available = :avail';
+            $selectAll = $selectAll.' and isAvailable = :avail';
         }
         if(strlen($text)>0){
             $text = strtolower($text);
@@ -43,10 +43,10 @@ class ViewBookRentMapper {
         
         //bind parameters with filter
         if($avail==0){
-            self::$db->bind(":avail", 'NOT AVAILABLE');
+            self::$db->bind(":avail", 0);
         }
         elseif($avail==1){
-            self::$db->bind(":avail", 'AVAILABLE');
+            self::$db->bind(":avail", 1);
         }
 
         if(strlen($text)>0){

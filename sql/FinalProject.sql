@@ -113,7 +113,7 @@ UPDATE BOOK SET Available = 0 WHERE BookId IN (1,4,5,7,10,13);
 SELECT '====CREATE OUR STATS VIEW====';
 -- DROP VIEW vw_book_rent
 CREATE VIEW vw_book_rent AS
-SELECT l.LibraryId, l.Name as library, b.BookId, b.Title, b.Author, b.Category, 
+SELECT l.LibraryId, l.Name as library, b.BookId, b.Title, b.Author, b.Category, b.Available as isAvailable,
 CASE WHEN b.Available = 1 THEN 'AVAILABLE' ELSE 'NOT AVAILABLE' END as Available,
 br.UserId as RentedBy,br.RentStart,br.RentEnd
 FROM BOOK b

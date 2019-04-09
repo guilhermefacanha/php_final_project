@@ -7,6 +7,7 @@ class ViewBookRent
     private $Title;
     private $Author;
     private $Category;
+    private $isAvailable;
     private $Available;
     private $RentedBy;
     private $RentStart;
@@ -22,6 +23,7 @@ class ViewBookRent
         $obj->Title = $this->getTitle();
         $obj->Author = $this->getAuthor();
         $obj->Category = $this->getCategory();
+        $obj->isAvailable = $this->getIsAvailable();
         $obj->Available = $this->getAvailable();
         $obj->RentedBy = $this->getRentedBy();
         $obj->RentStart = $this->getRentStart();
@@ -37,6 +39,7 @@ class ViewBookRent
     public function getTitle(){return $this->Title;}
     public function getAuthor(){return $this->Author;}
     public function getCategory(){return $this->Category;}
+    public function getIsAvailable(){return $this->isAvailable;}
     public function getAvailable(){return $this->Available;}
     public function getRentedBy(){return $this->RentedBy;}
     public function getRentStart(){return $this->RentStart;}
@@ -49,6 +52,7 @@ class ViewBookRent
     public function setAuthor($Author){$this->Author = $Author;}
     public function setCategory($Category){$this->Category = $Category;}
     public function setAvailable($Available){$this->Available = $Available;}
+    public function setIsAvailable($Available){$this->isAvailable = $isAvailable;}
     public function setRentedBy($RentedBy){$this->RentedBy = $RentedBy;}
     public function setRentStart($RentStart){$this->RentStart = $RentStart;}
     public function setRentEnd($RentEnd){$this->RentEnd = $RentEnd;}
