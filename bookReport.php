@@ -17,7 +17,7 @@
     Page::$subtitle = 'Book Rent Report';
     Page::header();
     if($_POST){
-        $avail = $_POST['available'];
+        $avail = intval($_POST['available']);
         $textSearch = $_POST['textSearch'];
         $result = RestClient::call("GET",array('avail' => $avail,'text' => $textSearch));
     }else{

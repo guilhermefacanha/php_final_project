@@ -18,7 +18,7 @@ class ViewBookRentMapper {
         return self::$db->resultSet();
     }
 
-    static function getAllFilter($avail, $text) : Array {
+    static function getAllFilter(int $avail, $text) : Array {
         
         $selectAll = "SELECT * FROM vw_book_rent where 1=1 ";
 
